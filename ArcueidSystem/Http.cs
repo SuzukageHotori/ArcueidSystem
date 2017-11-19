@@ -315,8 +315,10 @@ namespace ArcueidSystem
                                           "\r\nServer: ArcueidSystem/1.0" +
                                           "\r\nConnection: " + (close ? "close" : "Keep-Alive")));
             if (resp.RawContent == null)
+                //bb.Add(Encoding.UTF8.GetBytes("\r\nContent-Encoding: utf-8" +
+                //                              "\r\nContent-Length: " + resp.Content.Length));
                 bb.Add(Encoding.UTF8.GetBytes("\r\nContent-Encoding: utf-8" +
-                                              "\r\nContent-Length: " + resp.Content.Length));
+                                              "\r\nContent-Length: " + Encoding.UTF8.GetByteCount(resp.Content)));
             else
                 bb.Add(Encoding.UTF8.GetBytes("\r\nContent-Length: " + resp.RawContent.Length));
             if (resp.ContentType != null)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Http;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -39,7 +38,8 @@ namespace ArcueidSystem
             public bool Process(HttpServer server, HttpRequest request, HttpResponse response, Dictionary<string, string> param)
             {
                 
-                response.Content = " "+param["index"];
+                response.Content = " "+param["index"]+param["userid"];
+                response.ContentType = "text/plain";
                 return true;
             }
         }
